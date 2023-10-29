@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        /*
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
@@ -16,6 +17,14 @@ struct ContentView: View {
             Text("Let's build out our login page!")
         }
         .padding()
+        */
+        NavigationView{
+            ScrollView {
+                Text("Here is my account creation page")
+            }
+        }
+        Text("Lets build out our login page")
+            .padding()
     }
 }
 
