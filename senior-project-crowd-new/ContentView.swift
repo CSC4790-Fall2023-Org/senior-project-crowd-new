@@ -23,6 +23,21 @@ struct ContentView: View {
                 }.pickerStyle(SegmentedPickerStyle())
                     .padding()
                 
+                Image(systemName: "person.3.sequence.fill")
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(.mint)
+                    //.foregroundStyle(.primary)
+                    //.foregroundStyle(.white, .orange, .blue)\
+                    /*
+                    .foregroundStyle(
+                        .linearGradient(
+                            colors: [.pink, .purple],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing))
+                     */
+                    .font(.system(size: 94))
+                    .padding()
+                
                 Text("Here is my account creation page")
             }
             .navigationTitle("Create Account")
