@@ -17,44 +17,54 @@ struct ContentView: View {
         NavigationView{
             ScrollView {
                 
-                Picker(selection: $isLoginMode, label: Text("Picker here")) {
-                    Text("Login")
-                        .tag(true)
-                    Text("Create Account")
-                        .tag(false)
-                }.pickerStyle(SegmentedPickerStyle())
-                    .padding()
-                
-                Button {
+                VStack {
                     
-                } label: {
-                    Image(systemName: "person.3.sequence.fill")
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundStyle(.mint)
-                        //.foregroundStyle(.primary)
-                        //.foregroundStyle(.white, .orange, .blue)\
-                        /*
-                        .foregroundStyle(
-                            .linearGradient(
-                                colors: [.pink, .purple],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing))
-                         */
-                        .font(.system(size: 94))
-                        .padding()
-                }
-                
-                TextField("Email", text: $email)
-                TextField("Password", text: $password)
-                
-                //Text("Here is my account creation page")
-                
-                Button {
+                    Picker(selection: $isLoginMode, label: Text("Picker here")) {
+                        Text("Login")
+                            .tag(true)
+                        Text("Create Account")
+                            .tag(false)
+                    }.pickerStyle(SegmentedPickerStyle())
+                        //.padding()
                     
-                } label: {
-                    Text("Create Account")
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "person.3.sequence.fill")
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundStyle(.mint)
+                            //.foregroundStyle(.primary)
+                            //.foregroundStyle(.white, .orange, .blue)\
+                            /*
+                            .foregroundStyle(
+                                .linearGradient(
+                                    colors: [.pink, .purple],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing))
+                             */
+                            .font(.system(size: 94))
+                            .padding()
+                    }
+                    
+                    TextField("Email", text: $email)
+                    TextField("Password", text: $password)
+                    
+                    //Text("Here is my account creation page")
+                    
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("Create Account")
+                                .foregroundColor(.white)
+                                .padding(.vertical, 10)
+                            Spacer()
+                        }.background(Color.teal)
+                    }
+                    
                 }
-                
+                .padding()
             }
             .navigationTitle("Create Account")
         }
