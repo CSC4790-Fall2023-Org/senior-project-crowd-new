@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var isLoginMode = false
+    @State var email = ""
+    @State var password = ""
     
     var body: some View {
         NavigationView{
@@ -23,22 +25,36 @@ struct ContentView: View {
                 }.pickerStyle(SegmentedPickerStyle())
                     .padding()
                 
-                Image(systemName: "person.3.sequence.fill")
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(.mint)
-                    //.foregroundStyle(.primary)
-                    //.foregroundStyle(.white, .orange, .blue)\
-                    /*
-                    .foregroundStyle(
-                        .linearGradient(
-                            colors: [.pink, .purple],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing))
-                     */
-                    .font(.system(size: 94))
-                    .padding()
+                Button {
+                    
+                } label: {
+                    Image(systemName: "person.3.sequence.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(.mint)
+                        //.foregroundStyle(.primary)
+                        //.foregroundStyle(.white, .orange, .blue)\
+                        /*
+                        .foregroundStyle(
+                            .linearGradient(
+                                colors: [.pink, .purple],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing))
+                         */
+                        .font(.system(size: 94))
+                        .padding()
+                }
                 
-                Text("Here is my account creation page")
+                TextField("Email", text: $email)
+                TextField("Password", text: $password)
+                
+                //Text("Here is my account creation page")
+                
+                Button {
+                    
+                } label: {
+                    Text("Create Account")
+                }
+                
             }
             .navigationTitle("Create Account")
         }
