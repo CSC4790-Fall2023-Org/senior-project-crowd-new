@@ -49,7 +49,7 @@ struct LoginView: View {
                             .autocapitalization(.none)
                     }
                     .padding(11)
-                    .background(Color.white)
+                    .background(Color(.init(white: 1, alpha: 0.1)))
                     
                     //Text("Here is my account creation page")
                     
