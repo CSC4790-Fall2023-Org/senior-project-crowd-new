@@ -47,7 +47,10 @@ struct ContentView: View {
                     }
                     
                     TextField("Email", text: $email)
-                    TextField("Password", text: $password)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                    SecureField("Password", text: $password)
+                        .autocapitalization(.none)
                     
                     //Text("Here is my account creation page")
                     
