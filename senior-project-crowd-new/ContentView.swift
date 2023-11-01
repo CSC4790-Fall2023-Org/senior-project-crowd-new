@@ -14,11 +14,10 @@ struct ContentView: View {
     @State var password = ""
     
     var body: some View {
+        
         NavigationView{
             ScrollView {
-                
-                VStack {
-                    
+                VStack(spacing: 16) {
                     Picker(selection: $isLoginMode, label: Text("Picker here")) {
                         Text("Login")
                             .tag(true)
@@ -27,23 +26,19 @@ struct ContentView: View {
                     }.pickerStyle(SegmentedPickerStyle())
                         //.padding()
                     
-                    Button {
+                    if isLoginMode {
                         
-                    } label: {
-                        Image(systemName: "person.3.sequence.fill")
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.mint)
-                            //.foregroundStyle(.primary)
-                            //.foregroundStyle(.white, .orange, .blue)\
-                            /*
-                            .foregroundStyle(
-                                .linearGradient(
-                                    colors: [.pink, .purple],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing))
-                             */
-                            .font(.system(size: 94))
-                            .padding()
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "person.3.sequence.fill")
+                                .symbolRenderingMode(.hierarchical)
+                                .foregroundStyle(.cyan)
+                                //.background(Color.white)
+                                .font(.system(size: 94))
+                                .padding()
+                        }
+                        
                     }
                     
                     TextField("Email", text: $email)
@@ -63,13 +58,15 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .padding(.vertical, 10)
                             Spacer()
-                        }.background(Color.teal)
+                        }.background(Color.cyan)
                     }
                     
                 }
                 .padding()
+                .background(Color(.init(white: 0, alpha: 0.05)))
             }
-            .navigationTitle("Create Account")
+            .navigationTitle(isLoginMode ? "Log In" : "Create Account")
+            .background(Color(.init(red: 0.2, green: 0.8, blue: 0.8, alpha: 0.4)))
         }
     }
 }
