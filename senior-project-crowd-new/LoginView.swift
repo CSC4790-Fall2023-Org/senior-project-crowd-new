@@ -90,10 +90,10 @@ struct LoginView: View {
                     
                 }
                 .padding()
-                .background(Color(.init(white: 0, alpha: 0.03)))
+                .background(Color(.init(white: 0, alpha: 0.02)))
             }
             .navigationTitle(isLoginMode ? "Log In" : "Create Account")
-            //.background(Color(.init(red: 0.95, green: 0.7, blue: 0.65, alpha: 0.5))
+            .background(Color(.init(red: 0.75, green: 0.95, blue: 0.95, alpha: 0.5)))
                 //.ignoreSafeArea())
         }
         .navigationViewStyle(StackNavigationViewStyle())
