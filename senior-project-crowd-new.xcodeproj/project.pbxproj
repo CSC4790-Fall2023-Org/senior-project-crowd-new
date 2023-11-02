@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1455BE472AF253BE0021A506 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1455BE462AF253BE0021A506 /* FirebaseAuth */; };
 		1455BE492AF253BE0021A506 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1455BE482AF253BE0021A506 /* FirebaseStorage */; };
+		1466993B2AF35522004B8AC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1466993A2AF35522004B8AC8 /* GoogleService-Info.plist */; };
 		146882952AEC28AB00BB5DD1 /* senior_project_crowd_newApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146882942AEC28AB00BB5DD1 /* senior_project_crowd_newApp.swift */; };
 		146882972AEC28AB00BB5DD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146882962AEC28AB00BB5DD1 /* LoginView.swift */; };
 		146882992AEC28AD00BB5DD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146882982AEC28AD00BB5DD1 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1466993A2AF35522004B8AC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		146882912AEC28AB00BB5DD1 /* senior-project-crowd-new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "senior-project-crowd-new.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		146882942AEC28AB00BB5DD1 /* senior_project_crowd_newApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = senior_project_crowd_newApp.swift; sourceTree = "<group>"; };
 		146882962AEC28AB00BB5DD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				146882942AEC28AB00BB5DD1 /* senior_project_crowd_newApp.swift */,
 				146882962AEC28AB00BB5DD1 /* LoginView.swift */,
+				1466993A2AF35522004B8AC8 /* GoogleService-Info.plist */,
 				146882982AEC28AD00BB5DD1 /* Assets.xcassets */,
 				1468829A2AEC28AD00BB5DD1 /* Preview Content */,
 			);
@@ -244,6 +247,7 @@
 			files = (
 				1468829C2AEC28AD00BB5DD1 /* Preview Assets.xcassets in Resources */,
 				146882992AEC28AD00BB5DD1 /* Assets.xcassets in Resources */,
+				1466993B2AF35522004B8AC8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
