@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143AE3282AF4464600774A8E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AE3272AF4464600774A8E /* ImagePicker.swift */; };
 		1455BE472AF253BE0021A506 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1455BE462AF253BE0021A506 /* FirebaseAuth */; };
 		1455BE492AF253BE0021A506 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1455BE482AF253BE0021A506 /* FirebaseStorage */; };
 		1466993B2AF35522004B8AC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1466993A2AF35522004B8AC8 /* GoogleService-Info.plist */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		143AE3272AF4464600774A8E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1466993A2AF35522004B8AC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		146882912AEC28AB00BB5DD1 /* senior-project-crowd-new.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "senior-project-crowd-new.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		146882942AEC28AB00BB5DD1 /* senior_project_crowd_newApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = senior_project_crowd_newApp.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				146882942AEC28AB00BB5DD1 /* senior_project_crowd_newApp.swift */,
 				146882962AEC28AB00BB5DD1 /* LoginView.swift */,
+				143AE3272AF4464600774A8E /* ImagePicker.swift */,
 				1466993A2AF35522004B8AC8 /* GoogleService-Info.plist */,
 				146882982AEC28AD00BB5DD1 /* Assets.xcassets */,
 				1468829A2AEC28AD00BB5DD1 /* Preview Content */,
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143AE3282AF4464600774A8E /* ImagePicker.swift in Sources */,
 				146882972AEC28AB00BB5DD1 /* LoginView.swift in Sources */,
 				146882952AEC28AB00BB5DD1 /* senior_project_crowd_newApp.swift in Sources */,
 			);

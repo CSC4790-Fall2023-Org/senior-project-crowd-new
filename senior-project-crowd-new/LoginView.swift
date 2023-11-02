@@ -32,6 +32,8 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     
+    @State var shouldShowImagePicker = false
+    
     var body: some View {
         
         NavigationView{
@@ -46,18 +48,29 @@ struct LoginView: View {
                         //.padding()
                     
                     if !isLoginMode {
-                        
                         Button {
-                            
+                            shouldShowImagePicker.toggle()
                         } label: {
-                            Image(systemName: "person.3.sequence.fill")
-                                .symbolRenderingMode(.hierarchical)
-                                .foregroundStyle(Color(.init(red: 0.45, green: 0.9, blue: 0.9, alpha: 0.8)))
-                                //.background(Color.white)
-                                .font(.system(size: 94))
-                                .padding()
+                            VStack {
+                                if let image = self.image {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 128, height: 128)
+                                        .cornerRadius(64)
+                                } else {
+                                    Image(systemName: "person.fill") // could use person.3.sequence.fill here
+                                        .symbolRenderingMode(.hierarchical)
+                                        .foregroundStyle(Color(.init(red: 0.15, green: 0.9, blue: 0.9, alpha: 0.8)))
+                                        //.background(Color.white)
+                                        .font(.system(size: 94))
+                                        .padding()
+                                }
+                            }
+                            .overlay(RoundedRectangle(cornerRadius: 64)
+                                .stroke(Color(.init(red: 0.15, green: 0.9, blue: 0.9, alpha: 0.8)), lineWidth: 3)
+                            )
                         }
-                        
                     }
                     
                     Group {
@@ -82,7 +95,7 @@ struct LoginView: View {
                                 .padding(.vertical, 10)
                                 .font(.system(size: 14, weight: .semibold))
                             Spacer()
-                        }.background(Color(.init(red: 0.45, green: 0.9, blue: 0.9, alpha: 0.8)))
+                        }.background(Color(.init(red: 0.15, green: 0.9, blue: 0.9, alpha: 0.8)))
                     }
                     
                     Text(self.loginStatusMessage)
@@ -97,7 +110,12 @@ struct LoginView: View {
                 //.ignoreSafeArea())
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
+            ImagePicker(image: $image)
+        }
     }
+    
+    @State var image: UIImage?
     
     private func handleAction() {
         if isLoginMode {
