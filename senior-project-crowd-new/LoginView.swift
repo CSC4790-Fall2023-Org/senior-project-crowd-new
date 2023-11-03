@@ -7,10 +7,12 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorage
 
 class FirebaseManager: NSObject {
     
     let auth: Auth
+    let storage: Storage
     
     static let shared = FirebaseManager()
     
@@ -19,6 +21,7 @@ class FirebaseManager: NSObject {
         FirebaseApp.configure()
         
         self.auth = Auth.auth()
+        self.storage = Storage.storage()
         
         super.init()
         
@@ -157,9 +160,34 @@ struct LoginView: View {
             
             self.loginStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
             
+            self.persistImageToStorage()
+            
         }
     }
     
+    private func persistImageToStorage() {
+        //let filename = UUID().uuidString
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let ref = FirebaseManager.shared.storage.reference(withPath: uid)
+        guard let imageData = self.image?.jpegData(compressionQuality: 0.5) else { return }
+        ref.putData(imageData, metadata: nil) { metadata, err in
+                if let err = err {
+                    self.loginStatusMessage = "Failed to push image to Storage: \(err)"
+                    return
+                }
+                
+                ref.downloadURL { url, err in
+                    if let err = err {
+                        self.loginStatusMessage = "Failed to retrieve download URL: \(err)"
+                        return
+                    }
+                    
+                    self.loginStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
+                    
+                    print(url?.absoluteString)
+                }
+        }
+    }
 }
 
 #Preview {
