@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseStorage
 import FirebaseFirestore
+import FirebaseCore
 
 class FirebaseManager: NSObject {
     
@@ -30,6 +31,24 @@ class FirebaseManager: NSObject {
         
     }
     
+}
+
+struct HomePage: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("crowd.")
+                    .font(.system(size: 60))
+                    .fontWeight(.bold)
+                NavigationLink(destination: LoginView()) {
+                    Text("Click Here to Log In/Create an Account")
+                        .foregroundColor(.blue)
+                        .font(.system(size:15))
+                        .fontWeight(.bold)
+                }
+            }
+        }
+    }
 }
 
 struct LoginView: View {
@@ -118,7 +137,7 @@ struct LoginView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
             ImagePicker(image: $image)
-        }
+            }
     }
     
     @State var image: UIImage?
@@ -170,29 +189,54 @@ struct LoginView: View {
     
     private func persistImageToStorage() {
         //let filename = UUID().uuidString
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
-        let ref = FirebaseManager.shared.storage.reference(withPath: uid)
-        guard let imageData = self.image?.jpegData(compressionQuality: 0.5) else { return }
+        guard let uid = 
+            FirebaseManager.shared.auth.currentUser?.uid
+            else { return }
+        let ref = 
+            FirebaseManager.shared.storage
+            .reference(withPath: uid)
+        guard let imageData = 
+            self.image?.jpegData(compressionQuality: 0.5)
+            else { return }
         ref.putData(imageData, metadata: nil) { metadata, err in
+            if let err = err {
+                self.loginStatusMessage = "Failed to push image to Storage: \(err)"
+                return
+            }
+                
+            ref.downloadURL { url, err in
                 if let err = err {
-                    self.loginStatusMessage = "Failed to push image to Storage: \(err)"
+                    self.loginStatusMessage = "Failed to retrieve download URL: \(err)"
+                    return
+                }
+                    
+                self.loginStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
+                print(url?.absoluteString)
+                
+                guard let url = url else { return }
+                self.storeUserInformation(imageProfileUrl: url)
+            }
+        }
+    }
+    
+    private func storeUserInformation(imageProfileUrl: URL) {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let userData = ["email": self.email, "uid": uid, "profileImageUrl": imageProfileUrl.absoluteString]
+        FirebaseManager.shared.firestore.collection("users")
+            .document(uid).setData(userData) { err in
+                if let err = err {
+                    print(err)
+                    self.loginStatusMessage = "\(err)"
                     return
                 }
                 
-                ref.downloadURL { url, err in
-                    if let err = err {
-                        self.loginStatusMessage = "Failed to retrieve download URL: \(err)"
-                        return
-                    }
-                    
-                    self.loginStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
-                    
-                    print(url?.absoluteString)
-                }
-        }
+                print("Success")
+                
+            }
     }
 }
 
 #Preview {
-    LoginView()
+    HomePage()
+    //LoginView()
 }
